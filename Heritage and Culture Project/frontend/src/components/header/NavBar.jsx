@@ -55,6 +55,9 @@ export default function NavBar({ exploreRef }) {
         <li>
           <Link to="/contact">Contact Us</Link>
         </li>
+        <li> 
+          <Link to="/sign-in">Sign In</Link>
+        </li>
       </ul>
       
       <button className="menu-icon" onClick={toggleIcon}>
