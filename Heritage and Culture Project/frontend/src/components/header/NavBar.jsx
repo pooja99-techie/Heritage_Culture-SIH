@@ -56,7 +56,10 @@ export default function NavBar({ exploreRef }) {
           <Link to="/contact">Contact Us</Link>
         </li>
         <li> 
-          <Link to="/sign-in">Sign In</Link>
+          <Link to="/signin">Sign In</Link>
+        </li>
+        <li> 
+          <Link to="/signup">Sign Up</Link>
         </li>
       </ul>
       
