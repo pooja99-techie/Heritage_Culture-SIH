@@ -10,7 +10,7 @@ export default function App() {
   return (
     <div>
       <BrowserRouter>
-        {/* <NavBar />  This will show the NavBar on every page */}
+        <NavBar />  
         <Routes>
           {/* Define each route directly under Routes */}
           <Route path="/" element={<Home />} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/signup.css';
 
 export default function SignUp() {
@@ -9,15 +9,43 @@ export default function SignUp() {
     password: ''
   });
 
+  const [ error, setError] = useState(null);
+  const [ loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ 
+        ...formData, 
+        [e.target.id]: e.target.value,
+     });
   };
+ 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form data submitted:', formData);
+    try {
+      setLoading(true);
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.success === false) {
+        setLoading(false);
+        setError(data.message);
+        return;
+      }
+      setLoading(false);
+      setError(null);
+      navigate('/signin');
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
+    }
   };
-
   return (
     <div className="signup-container">
       <form className="signup-form" onSubmit={handleSubmit}>
@@ -26,6 +54,7 @@ export default function SignUp() {
           <label>Username</label>
           <input
             type="text"
+            id='username'
             name="username"
             value={formData.username}
             onChange={handleChange}
@@ -37,6 +66,7 @@ export default function SignUp() {
           <label>Email</label>
           <input
             type="email"
+            id='email'
             name="email"
             value={formData.email}
             onChange={handleChange}
@@ -48,6 +78,7 @@ export default function SignUp() {
           <label>Password</label>
           <input
             type="password"
+            id='password'
             name="password"
             value={formData.password}
             onChange={handleChange}
@@ -55,7 +86,12 @@ export default function SignUp() {
             required
           />
         </div>
-        <button type="submit">Sign Up</button>
+        <button 
+          disabled={loading}
+          type="submit"
+        >
+          {loading ? 'Loading...' : 'Sign Up'}
+        </button>
       </form>
       <div>
         <p>Have an account</p>
@@ -63,6 +99,7 @@ export default function SignUp() {
         <span style={{ color: 'blue'}}>Sign in</span>
         </Link>
       </div>
+      {error && <p style={{color: 'red', fontWeight:'bold'}}>{error}</p>}
     </div>
   );
 }
