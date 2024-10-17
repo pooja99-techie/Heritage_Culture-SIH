@@ -1,0 +1,106 @@
+.slider-container {
+  margin: 0;
+  padding: 20px;
+  width: 100%;
+}
+
+.slider-container h1 {
+  font-size: 40px;
+  color: #808080; /* Change color, adjust as desired */
+  margin-left: 500px !important;
+  margin-bottom: 30px !important; /* Center the heading */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Add a shadow effect */
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: "Arial", sans-serif; /* Adjust font if needed */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.slider-container h1:hover {
+  margin-left: 500px;
+  margin-bottom: 30px !important;
+  color: #1c1c1c; /* Darker color on hover */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* Enhance the shadow */
+}
+
+.carousel {
+  display: flex;
+  width: auto;
+}
+
+.card {
+  width: 225px;
+  height: 300px;
+  margin: 0 20px;
+  perspective: 1000px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  flex: 0 0 auto;
+  z-index: 0;
+}
+
+.heading {
+  font-size: calc(1.3rem + 0.1vw) !important;
+}
+
+.card-front {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+}
+
+.card-back {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: rotateY(180deg);
+  padding: 10px;
+}
+
+.card.flipped .card-front {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .card-back {
+  transform: rotateY(0);
+}
+
+.heritage-image {
+  width: 100%;
+  height: 65%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.carousel .carousel-status {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 180px;
+    height: 250px;
+  }
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}

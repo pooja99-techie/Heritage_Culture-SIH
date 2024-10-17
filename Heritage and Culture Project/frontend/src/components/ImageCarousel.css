@@ -1,0 +1,11 @@
+.custom-carousel {
+  width: 100vw; /* Full width */
+  height: 100vh; /* Adjust height as needed */
+  overflow: hidden; /* Hide anything that goes beyond the defined size */
+}
+
+.custom-carousel img {
+  width: auto; /* Ensures images cover the container without distortion */
+  height: auto; /* Image should take full height of carousel */
+  object-fit: contain;
+}

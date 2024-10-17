@@ -10,8 +10,8 @@ export default function App() {
   return (
     <div>
       <BrowserRouter>
-        <NavBar />  
-        <Routes>
+      <NavBar />  
+      <Routes>
           {/* Define each route directly under Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/explore" element={<Explore />} />
