@@ -94,7 +94,7 @@ export default function SignUp() {
         </button>
       </form>
       <div>
-        <p>Have an account</p>
+        <p>Have an account?</p>
         <Link to = {"/signin"}>
         <span style={{ color: 'blue'}}>Sign in</span>
         </Link>
